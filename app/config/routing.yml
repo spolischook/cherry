@@ -1,0 +1,14 @@
+google_calendar_api:
+    resource: "@GoogleCalendarBundle/Resources/config/routing/api.yml"
+    prefix:   /api/calendar
+    options:
+        expose: true
+
+google_calendar_default:
+    resource: "@GoogleCalendarBundle/Controller/DefaultController.php"
+    prefix:   /calendar
+    type:     annotation
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+

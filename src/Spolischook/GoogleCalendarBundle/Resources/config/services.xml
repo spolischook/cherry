@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="google_calendar.calendar.class">Spolischook\GoogleCalendarBundle\GoogleCalendar</parameter>
+        <parameter key="google_calendar.calendar_manager.class">Spolischook\GoogleCalendarBundle\CalendarManager</parameter>
+    </parameters>
+
+    <services>
+        <service id="google_calendar.calendar" class="%google_calendar.calendar.class%">
+            <argument>%google_calendar.user%</argument>
+            <argument>%google_calendar.password%</argument>
+            <argument>%google_calendar.calendar_user%</argument>
+            <argument>%google_calendar.calendar_visibility%</argument>
+        </service>
+        <service id="google_calendar.calendar_manager" class="%google_calendar.calendar_manager.class%">
+            <argument type="service" id="google_calendar.calendar" />
+            <argument>%google_calendar.allowed_register_time%</argument>
+        </service>
+    </services>
+</container>

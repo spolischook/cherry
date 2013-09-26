@@ -1,0 +1,9 @@
+put_event:
+    path:     /event
+    defaults: { _controller: GoogleCalendarBundle:Api:putEvent }
+    methods:  [PUT]
+
+get_events:
+    path:     /events
+    defaults: { _controller: GoogleCalendarBundle:Api:getEvents }
+    methods:  [GET]

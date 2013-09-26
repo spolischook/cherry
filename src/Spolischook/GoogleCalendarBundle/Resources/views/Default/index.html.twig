@@ -1,0 +1,31 @@
+{% extends "::base.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/calendar.css') }}">
+{% endblock %}
+{% block body %}
+<div id='calendar' class="ui-dialog"></div>
+<div id="dialog-form" data-date-time="0" title="Запис на розпис хною">
+    <p>Запис на <span id="time-to-appointment"></span></p>
+    <p class="validateTips"></p>
+
+    <form>
+        <fieldset>
+            <label for="name">Ім’я</label>
+            <input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all" />
+            <span class="form-helper">Наприклад: Васіліса Єгоровна</span>
+            <label for="phone">Мобільний телефон</label>
+            <input type="phone" name="phone" id="phone" value="" class="text ui-widget-content ui-corner-all" />
+            <span class="form-helper">Наприклад: 0675558844</span>
+        </fieldset>
+    </form>
+</div>
+<div id="dialog" title="Basic dialog">
+    <p></p>
+</div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('js/calendar.js') }}"></script>
+{% endblock %}

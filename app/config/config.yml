@@ -1,0 +1,81 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: assetic.yml }
+
+framework:
+    #esi:             ~
+    #translator:      { fallback: %locale% }
+    secret:          %secret%
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
+    form:            ~
+    csrf_protection: ~
+    validation:      { enable_annotations: true }
+    templating:
+        engines: ['twig']
+        #assets_version: SomeVersionScheme
+    default_locale:  "%locale%"
+    trusted_proxies: ~
+    session:         ~
+    fragments:       ~
+
+# Twig Configuration
+twig:
+    debug:            %kernel.debug%
+    strict_variables: %kernel.debug%
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   %database_driver%
+        host:     %database_host%
+        port:     %database_port%
+        dbname:   %database_name%
+        user:     %database_user%
+        password: %database_password%
+        charset:  UTF8
+        # if using pdo_sqlite as your database driver, add the path in parameters.yml
+        # e.g. database_path: %kernel.root_dir%/data/data.db3
+        # path:     %database_path%
+
+    orm:
+        auto_generate_proxy_classes: %kernel.debug%
+        auto_mapping: true
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: %mailer_transport%
+    host:      %mailer_host%
+    username:  %mailer_user%
+    password:  %mailer_password%
+    spool:     { type: memory }
+
+fos_rest:
+    format_listener:
+        fallback_format: json
+    body_converter:
+        enabled: true
+        validate: true
+
+sensio_framework_extra:
+    request: { converters: true }
+
+google_calendar:
+    user: %google_calendar_user%
+    password: %google_calendar_password%
+    calendar_user: %google_calendar_calendar_user%
+    calendar_visibility: %google_calendar_calendar_visibility%
+    allowed_register_time:
+        2:
+            - {start: '15:00', end: '15:50'}
+            - {start: '16:00', end: '16:50'}
+            - {start: '17:00', end: '17:50'}
+        4:
+            - {start: '19:00', end: '20:50'}
+            - {start: '20:00', end: '21:50'}
+        5:
+            - {start: '13:00', end: '13:50'}
+            - {start: '14:00', end: '14:50'}
+            - {start: '15:00', end: '15:50'}
